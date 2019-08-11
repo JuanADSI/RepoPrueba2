@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="mtdListarProductos">
+        <s:complexType />
+      </s:element>
+      <s:element name="mtdListarProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mtdListarProductosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mtdRegistrarPublicaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objpubli" type="tns:Publicaciones" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Publicaciones">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPublicacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estrato" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroHabitaciones" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCiudad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCategoria" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="mtdRegistrarPublicacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mtdRegistrarPublicacionesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="mtdListarProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:mtdListarProductos" />
+  </wsdl:message>
+  <wsdl:message name="mtdListarProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:mtdListarProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="mtdRegistrarPublicacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:mtdRegistrarPublicaciones" />
+  </wsdl:message>
+  <wsdl:message name="mtdRegistrarPublicacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:mtdRegistrarPublicacionesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioRegistrarPublicacionesSoap">
+    <wsdl:operation name="mtdListarProductos">
+      <wsdl:input message="tns:mtdListarProductosSoapIn" />
+      <wsdl:output message="tns:mtdListarProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mtdRegistrarPublicaciones">
+      <wsdl:input message="tns:mtdRegistrarPublicacionesSoapIn" />
+      <wsdl:output message="tns:mtdRegistrarPublicacionesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioRegistrarPublicacionesSoap" type="tns:ServicioRegistrarPublicacionesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="mtdListarProductos">
+      <soap:operation soapAction="http://tempuri.org/mtdListarProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mtdRegistrarPublicaciones">
+      <soap:operation soapAction="http://tempuri.org/mtdRegistrarPublicaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioRegistrarPublicacionesSoap12" type="tns:ServicioRegistrarPublicacionesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="mtdListarProductos">
+      <soap12:operation soapAction="http://tempuri.org/mtdListarProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mtdRegistrarPublicaciones">
+      <soap12:operation soapAction="http://tempuri.org/mtdRegistrarPublicaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioRegistrarPublicaciones">
+    <wsdl:port name="ServicioRegistrarPublicacionesSoap" binding="tns:ServicioRegistrarPublicacionesSoap">
+      <soap:address location="http://localhost:59138/ServicioRegistrarPublicaciones.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioRegistrarPublicacionesSoap12" binding="tns:ServicioRegistrarPublicacionesSoap12">
+      <soap12:address location="http://localhost:59138/ServicioRegistrarPublicaciones.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
